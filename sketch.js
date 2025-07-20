@@ -23,17 +23,13 @@ var initials = {
 
 canvasSketch(() => {
 
-
   angleMode(DEGREES);
   noiseDetail(2, 1)
-  return ({
-    context,
-    width,
-    height
-    
-  }) => {
+  
+  return ({ context, width, height }) => {
 
-    background(255, 10);
+    // Set the background to black with low alpha for a trailing effect
+    background(0, 10);
     noStroke();
     translate(width / 2, height / 2);
 
@@ -45,19 +41,14 @@ canvasSketch(() => {
       var n = noise(xoff + start, yoff + start);
 
       var h = map(n, 0, 1, initials.negHeight, initials.posHeight);
-
-      var r = map(sin(i), -1, 1, 0, 5);
-      var g = map(h, -150, 150, 0, 5);
-      var b = map(n, 0, 1, 0, 5);
-
-      fill(r, g, b, 10);
+      
+      // Set the fill to white with low alpha
+      fill(255, 10);
 
       rotate(initials.space)
       rect(initials.circleRadius, initials.circleRadius, h, 1)
-
     }
 
     start += initials.start;
-
   }
 }, settings);
